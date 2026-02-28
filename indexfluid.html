@@ -1,0 +1,512 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Norfolk International Airport – Free Wi-Fi</title>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800;900&family=Open+Sans:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet"/>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html, body {
+      min-height: 100vh;
+      font-family: 'Open Sans', sans-serif;
+    }
+
+    /* ── Background ── */
+    body {
+      min-height: 100vh;
+      background-image: url('https://satishrayanki.github.io/orf-wifi-splash/Back_Ground_NAA.jpg');
+      background-size: cover;
+      background-position: center center;
+      background-repeat: no-repeat;
+      background-attachment: fixed;
+      background-color: #0a2a5e;
+      display: flex;
+      flex-direction: column;
+      position: relative;
+    }
+
+    /* Light, airy overlay — much less dark */
+    body::before {
+      content: '';
+      position: fixed; inset: 0;
+      background: linear-gradient(
+        160deg,
+        rgba(0, 30, 90, 0.18) 0%,
+        rgba(0, 50, 120, 0.30) 40%,
+        rgba(0, 20, 70, 0.50) 100%
+      );
+      z-index: 0;
+    }
+
+    /* ── Logo — top left ── */
+    .logo-wrap {
+      position: relative;
+      z-index: 2;
+      padding: 22px 28px 0;
+    }
+
+    .logo-wrap img {
+      max-height: 66px;
+      max-width: 210px;
+      width: auto;
+      object-fit: contain;
+      display: block;
+      /* Crisp white on the photo background */
+      filter: drop-shadow(0 2px 8px rgba(0,0,0,0.3)) brightness(0) invert(1);
+    }
+
+    .logo-text-fallback {
+      display: none;
+      flex-direction: column;
+      gap: 3px;
+    }
+    .logo-text-fallback .lt {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 30px; font-weight: 900;
+      color: #fff; letter-spacing: 5px; line-height: 1;
+    }
+    .logo-text-fallback .ls {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 7.5px; font-weight: 700;
+      color: rgba(255,255,255,0.9);
+      letter-spacing: 2.5px; text-transform: uppercase;
+    }
+
+    /* ── Main content ── */
+    .content {
+      position: relative;
+      z-index: 2;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 24px 28px 48px;
+      text-align: center;
+      width: 100%;
+      max-width: 620px;
+      margin: 0 auto;
+    }
+
+    /* Badge pill */
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      background: rgba(255,255,255,0.22);
+      backdrop-filter: blur(12px);
+      border: 1px solid rgba(255,255,255,0.40);
+      border-radius: 50px;
+      padding: 7px 18px;
+      margin-bottom: 20px;
+      animation: fadeDown 0.6s ease both;
+    }
+    .badge .dot {
+      width: 7px; height: 7px;
+      background: #6abf45;
+      border-radius: 50%;
+      animation: pulse 2s ease-in-out infinite;
+    }
+    @keyframes pulse {
+      0%,100% { opacity:1; transform: scale(1); }
+      50%      { opacity:0.6; transform: scale(1.3); }
+    }
+    .badge span {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 11px; font-weight: 700;
+      color: #fff; letter-spacing: 1.5px;
+      text-transform: uppercase;
+    }
+
+    /* Headline */
+    .content h1 {
+      font-family: 'Montserrat', sans-serif;
+      font-size: clamp(30px, 5.5vw, 46px);
+      font-weight: 900;
+      color: #ffffff;
+      line-height: 1.12;
+      margin-bottom: 12px;
+      text-shadow: 0 2px 24px rgba(0,0,0,0.25);
+      letter-spacing: -0.5px;
+      animation: fadeUp 0.7s ease both 0.1s;
+    }
+
+    .content h2 {
+      font-family: 'Montserrat', sans-serif;
+      font-size: clamp(14px, 2.2vw, 17px);
+      font-weight: 600;
+      color: rgba(255,255,255,0.92);
+      letter-spacing: 0.3px;
+      text-shadow: 0 1px 10px rgba(0,0,0,0.2);
+      animation: fadeUp 0.7s ease both 0.2s;
+    }
+
+    /* Thin shimmer divider */
+    .divider {
+      width: 280px;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.55), transparent);
+      margin: 24px auto;
+      animation: fadeUp 0.7s ease both 0.3s;
+    }
+
+    .content p {
+      font-size: clamp(13.5px, 2vw, 15.5px);
+      color: rgba(255,255,255,0.90);
+      line-height: 1.72;
+      max-width: 400px;
+      text-shadow: 0 1px 6px rgba(0,0,0,0.2);
+      animation: fadeUp 0.7s ease both 0.35s;
+    }
+
+    /* SSID line */
+    .ssid-line {
+      margin-top: 26px;
+      font-family: 'Montserrat', sans-serif;
+      font-size: clamp(14px, 2.2vw, 16px);
+      color: #ffffff;
+      font-weight: 600;
+      line-height: 1.6;
+      text-shadow: 0 1px 8px rgba(0,0,0,0.25);
+      animation: fadeUp 0.7s ease both 0.4s;
+    }
+    .ssid-line strong { font-weight: 900; }
+
+    /* Frosted glass action box */
+    .action-box {
+      margin-top: 28px;
+      width: 100%;
+      max-width: 430px;
+      background: rgba(255,255,255,0.18);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border: 1px solid rgba(255,255,255,0.38);
+      border-radius: 20px;
+      padding: 22px 24px 22px;
+      box-shadow:
+        0 8px 32px rgba(0,0,0,0.18),
+        inset 0 1px 0 rgba(255,255,255,0.35);
+      animation: fadeUp 0.7s ease both 0.5s;
+    }
+
+    /* Checkbox */
+    .check-row {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      text-align: left;
+      margin-bottom: 18px;
+    }
+
+    .check-row input[type="checkbox"] {
+      flex-shrink: 0;
+      margin-top: 3px;
+      width: 18px; height: 18px;
+      accent-color: #4e9a2e;
+      cursor: pointer;
+    }
+
+    .check-row label {
+      font-size: 13.5px;
+      color: rgba(255,255,255,0.95);
+      cursor: pointer;
+      line-height: 1.6;
+    }
+
+    .check-row label .aup-trigger {
+      color: #ffffff;
+      font-style: italic;
+      text-decoration: none;
+      border-bottom: 1px solid rgba(255,255,255,0.55);
+      cursor: pointer;
+      transition: border-color 0.2s;
+    }
+    .check-row label .aup-trigger:hover {
+      border-color: rgba(255,255,255,1);
+    }
+
+    /* Connect button */
+    .btn-connect {
+      display: block; width: 100%;
+      padding: 15px;
+      background: linear-gradient(135deg, #4a9628 0%, #6abf45 55%, #4a9628 100%);
+      background-size: 200% 100%;
+      color: #ffffff;
+      font-family: 'Montserrat', sans-serif;
+      font-size: 16px; font-weight: 800;
+      border: none; border-radius: 12px;
+      cursor: pointer; letter-spacing: 1.2px;
+      text-transform: uppercase;
+      transition: all 0.3s;
+      box-shadow:
+        0 5px 20px rgba(74,150,40,0.5),
+        0 1px 0 rgba(255,255,255,0.2) inset;
+      position: relative; overflow: hidden;
+    }
+    .btn-connect::before {
+      content: '';
+      position: absolute; top: 0; left: 0; right: 0;
+      height: 50%;
+      background: linear-gradient(to bottom, rgba(255,255,255,0.15), transparent);
+      border-radius: 12px 12px 0 0;
+      pointer-events: none;
+    }
+    .btn-connect:hover:not(:disabled) {
+      background-position: 100% 0%;
+      transform: translateY(-2px);
+      box-shadow: 0 10px 28px rgba(74,150,40,0.55);
+    }
+    .btn-connect:active:not(:disabled) { transform: translateY(0); }
+    .btn-connect:disabled {
+      background: rgba(255,255,255,0.2);
+      box-shadow: none; cursor: not-allowed;
+      color: rgba(255,255,255,0.45);
+    }
+
+    /* AUP link */
+    .aup-bottom-link {
+      display: inline-block; margin-top: 13px;
+      font-size: 11.5px;
+      color: rgba(255,255,255,0.70);
+      text-decoration: none;
+      border-bottom: 1px solid rgba(255,255,255,0.30);
+      transition: color 0.2s, border-color 0.2s;
+    }
+    .aup-bottom-link:hover {
+      color: #fff;
+      border-color: rgba(255,255,255,0.85);
+    }
+
+    /* Animations */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(18px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes fadeDown {
+      from { opacity: 0; transform: translateY(-10px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    /* ══════════════════
+       AUP MODAL
+    ══════════════════ */
+    .modal-overlay {
+      display: none;
+      position: fixed; inset: 0;
+      background: rgba(0,15,50,0.60);
+      z-index: 200;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+    }
+    .modal-overlay.open { display: flex; }
+
+    .modal {
+      background: #ffffff;
+      border-radius: 20px;
+      width: 100%; max-width: 560px;
+      max-height: 82vh;
+      display: flex; flex-direction: column;
+      box-shadow: 0 32px 80px rgba(0,0,0,0.4);
+      animation: modalIn 0.35s cubic-bezier(.22,.68,0,1.2) both;
+      overflow: hidden;
+    }
+    @keyframes modalIn {
+      from { opacity:0; transform:scale(0.93) translateY(20px); }
+      to   { opacity:1; transform:scale(1) translateY(0); }
+    }
+
+    .modal-header {
+      background: linear-gradient(135deg, #001845, #0057b8);
+      padding: 18px 22px 16px;
+      display: flex; align-items: center; justify-content: space-between;
+      flex-shrink: 0;
+    }
+    .modal-header h3 {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 13px; font-weight: 700;
+      color: #fff; letter-spacing: 0.3px;
+    }
+    .modal-close {
+      background: rgba(255,255,255,0.15);
+      border: 1px solid rgba(255,255,255,0.3);
+      color: #fff; width: 30px; height: 30px;
+      border-radius: 50%; cursor: pointer;
+      font-size: 15px; font-weight: 700;
+      display: flex; align-items: center; justify-content: center;
+      transition: all 0.2s; flex-shrink: 0;
+    }
+    .modal-close:hover { background: rgba(255,255,255,0.28); transform: rotate(90deg); }
+
+    .modal-body {
+      overflow-y: auto; padding: 22px 26px; flex: 1;
+      color: #1a1a2e; font-size: 13px;
+    }
+    .modal-body h4 {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 11px; font-weight: 800;
+      color: #0057b8; text-transform: uppercase; letter-spacing: 1px;
+      margin: 22px 0 7px;
+      display: flex; align-items: center; gap: 8px;
+    }
+    .modal-body h4::before {
+      content: '';
+      width: 3px; height: 14px;
+      background: linear-gradient(to bottom, #0057b8, #3a9bdc);
+      border-radius: 2px; flex-shrink: 0;
+    }
+    .modal-body h4:first-child { margin-top: 0; }
+    .modal-body p {
+      color: #4a6080; font-size: 12.5px;
+      line-height: 1.72; margin-bottom: 6px; padding-left: 11px;
+    }
+
+    .modal-footer {
+      padding: 14px 24px;
+      background: #f0f5fb; border-top: 1px solid #d0dff0;
+      text-align: center; flex-shrink: 0;
+    }
+    .modal-footer button {
+      padding: 10px 40px;
+      background: linear-gradient(135deg, #001845, #0057b8);
+      color: #fff;
+      font-family: 'Montserrat', sans-serif;
+      font-size: 13px; font-weight: 700;
+      border: none; border-radius: 8px;
+      cursor: pointer; letter-spacing: 0.5px;
+      transition: all 0.2s;
+      box-shadow: 0 4px 12px rgba(0,87,184,0.3);
+    }
+    .modal-footer button:hover { transform: translateY(-1px); box-shadow: 0 6px 18px rgba(0,87,184,0.4); }
+
+    .modal-body::-webkit-scrollbar { width: 5px; }
+    .modal-body::-webkit-scrollbar-track { background: transparent; }
+    .modal-body::-webkit-scrollbar-thumb { background: #d0dff0; border-radius: 3px; }
+
+    @media (max-width: 480px) {
+      .logo-wrap { padding: 16px 18px 0; }
+      .logo-wrap img { max-height: 52px; }
+      .content { padding: 16px 18px 40px; }
+      .action-box { padding: 18px 18px; border-radius: 16px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Logo top-left -->
+  <div class="logo-wrap">
+    <img
+      src="https://satishrayanki.github.io/orf-wifi-splash/NIA-Horizontal-Logo-4c.jpg"
+      alt="Norfolk International Airport"
+      onerror="this.style.display='none'; document.getElementById('logo-fb').style.display='flex';"
+    />
+    <div class="logo-text-fallback" id="logo-fb">
+      <div class="lt">ORF</div>
+      <div class="ls">Norfolk International Airport</div>
+    </div>
+  </div>
+
+  <!-- Content -->
+  <div class="content">
+
+    <div class="badge">
+      <div class="dot"></div>
+      <span>Free Wi-Fi Available</span>
+    </div>
+
+    <h1>ORF Keeps you Connected.</h1>
+    <h2>Enjoy Free Terminal-Wide Wi-Fi</h2>
+
+    <div class="divider"></div>
+
+    <p>We've made your travel experience even smoother. ORF now offers free, high-speed Wi-Fi for all travelers and guests.</p>
+
+    <div class="ssid-line">
+      <strong>Connect to FlyORFwifi</strong> on your device and enjoy<br>unlimited browsing before your flight.
+    </div>
+
+    <!-- Frosted action box -->
+    <div class="action-box">
+      <div class="check-row">
+        <input type="checkbox" id="chk2" onchange="updateBtn()"/>
+        <label for="chk2">
+          I Agree with the Wi-Fi System
+          <a class="aup-trigger" onclick="openModal(); return false;">User Agreement and Acceptable Use Policy</a>
+        </label>
+      </div>
+
+      <button class="btn-connect" id="connectBtn" disabled onclick="handleConnect()">Connect</button>
+      <a class="aup-bottom-link" onclick="openModal(); return false;" href="#">Acceptable Use Policy</a>
+    </div>
+
+  </div>
+
+  <!-- AUP Modal -->
+  <div class="modal-overlay" id="aupModal" onclick="closeModalOutside(event)">
+    <div class="modal">
+      <div class="modal-header">
+        <h3>Composite Airport Guest Wi-Fi Acceptable Use Policy</h3>
+        <button class="modal-close" onclick="closeModal()">✕</button>
+      </div>
+      <div class="modal-body">
+        <h4>1. Purpose and Scope</h4>
+        <p>This free public internet Wi-Fi network ("Network") is provided by the Norfolk Airport Authority as a courtesy service to travelers, visitors, and other authorized individuals. By accessing the Network, you agree to comply with the terms of this Acceptable Use Policy. Access to this service is a privilege and not a right. Therefore, the service may be blocked, suspended, or terminated at any time for any reason including, but not limited to, violation of this agreement, actions that may lead to liability for the Norfolk Airport Authority or its owners, disruption of access to other Users or Networks, and violation of applicable laws or regulations.</p>
+
+        <h4>2. Disclaimer and Liability</h4>
+        <p>You acknowledge (I) that the Service may not be uninterrupted or error-free; (II) that viruses or other harmful applications may be available through the Service; (III) that The Norfolk Airport Authority / Norfolk International Airport does not guarantee the security of the Service and that unauthorized third parties may access your computer or files or otherwise monitor your connection. THE SERVICE AND ANY PRODUCTS OR SERVICES PROVIDED ON OR IN CONNECTION WITH THE SERVICE ARE PROVIDED ON AN 'AS IS', 'AS AVAILABLE' BASIS WITHOUT WARRANTIES OF ANY KIND.</p>
+
+        <h4>3. User Authentication and Access</h4>
+        <p>BY CLICKING ON 'I AGREE WITH THE WI-FI SYSTEM USER AGREEMENT AND ACCEPTABLE USE POLICY' ON THE WI-FI SYSTEM SPLASH PAGE, YOU REPRESENT THAT YOU HAVE READ, UNDERSTAND AND AGREE TO THE TERMS OF THIS AGREEMENT; AND YOU ARE AT LEAST 18 YEARS OF AGE. You will be automatically logged out if there is inactivity on your computer for 60 minutes.</p>
+
+        <h4>4. Acceptable and Unacceptable Use</h4>
+        <p>Your access to the Service is conditioned on legal and appropriate use. The use of the Service for the following activities is prohibited: Spamming and invasion of privacy; Intellectual property right violations; Obscene or indecent speech or materials; Defamatory or abusive language; Forging of headers; Hacking; Distribution of Internet viruses, Trojan Horses, or other destructive activities; Facilitating a violation of this Agreement of Use; Export control violations; Other illegal activities; Resale.</p>
+
+        <h4>5. Security and Monitoring</h4>
+        <p>Users should have no expectation of privacy when using this Network. Activity may be monitored and logged for compliance, troubleshooting, or security purposes. The Network may not be encrypted. Users are advised not to transmit sensitive or confidential information without the use of a personal VPN.</p>
+
+        <h4>6. Privacy Statement</h4>
+        <p>We collect several types of information from and about users of our Platforms, including information by which you may be personally identified and information about your internet connection, the equipment you use to access our Platforms, and usage details. We use information that we collect about you or that you provide to us, including any personal information: To present our Platforms and associated content to you; to provide you with information, products, or services that you request from us; and to comply with any court order, law, or legal process.</p>
+
+        <h4>7. Enforcement and Consequences</h4>
+        <p>Violations of this Policy may result in suspension or termination of access. Illegal activities or serious violations may be reported to law enforcement. Norfolk Airport Authority reserves the right to update or modify this Policy at any time without prior notice.</p>
+
+        <h4>8. Acknowledgment</h4>
+        <p>Your electronic acceptance of this Agreement by clicking 'I Agree with the Wi-Fi System User Agreement and Acceptable Use Policy' has the same effect as if you had signed this Agreement. The effective date of this Agreement is the date that you click on 'I Agree...'.</p>
+      </div>
+      <div class="modal-footer">
+        <button onclick="closeModal()">Close</button>
+      </div>
+    </div>
+  </div>
+
+<script>
+  function updateBtn() {
+    document.getElementById('connectBtn').disabled = !document.getElementById('chk2').checked;
+  }
+  function handleConnect() {
+    var btn = document.getElementById('connectBtn');
+    btn.textContent = 'Connecting…';
+    btn.disabled = true;
+    var params = new URLSearchParams(window.location.search);
+    var continueUrl = params.get('continue_url') || 'https://norfolkairport.com';
+    setTimeout(function() { window.location.href = continueUrl; }, 1500);
+  }
+  function openModal() {
+    document.getElementById('aupModal').classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+  function closeModal() {
+    document.getElementById('aupModal').classList.remove('open');
+    document.body.style.overflow = '';
+  }
+  function closeModalOutside(e) {
+    if (e.target === document.getElementById('aupModal')) closeModal();
+  }
+</script>
+
+</body>
+</html>
