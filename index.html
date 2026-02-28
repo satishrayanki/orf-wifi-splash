@@ -9,20 +9,20 @@
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
     :root {
-      --orf-blue: #003087;
-      --orf-accent: #0072ce;
-      --orf-green: #5a9e2f;
-      --orf-green-hover: #4a8a25;
-      --white: #ffffff;
-      --light-gray: #f4f6f9;
-      --border: #dde3ed;
-      --text: #222;
-      --text-muted: #555;
+      --blue-dark:   #002060;
+      --blue-mid:    #0057b8;
+      --blue-light:  #3a9bdc;
+      --green:       #4e9a2e;
+      --green-hover: #3d7d24;
+      --white:       #ffffff;
+      --gray-bg:     #f0f4f9;
+      --gray-border: #d6e2f0;
+      --text:        #1a1a2e;
+      --text-muted:  #4a5568;
     }
 
     html, body {
-      margin: 0;
-      padding: 0;
+      margin: 0; padding: 0;
       min-height: 100vh;
       font-family: 'Open Sans', sans-serif;
     }
@@ -31,153 +31,150 @@
       display: flex;
       flex-direction: column;
       min-height: 100vh;
-      background-color: #1a3a6b;
+      background-color: var(--blue-dark);
     }
 
-    /* ══════════════════════════════════════
-       LOGO BAR — full width white strip
-       Replace URL below with your GitHub Pages path once uploaded
-       e.g. https://YOUR-USERNAME.github.io/orf-wifi-splash/NIA-Horizontal-Logo-4c.jpg
-    ══════════════════════════════════════ */
+    /* ── Logo bar ── */
     .logo-bar {
       width: 100%;
       background: var(--white);
-      padding: 16px 40px 13px;
+      padding: 14px 40px 12px;
       text-align: center;
-      border-bottom: 3px solid var(--orf-accent);
       flex-shrink: 0;
+      box-shadow: 0 2px 0 var(--blue-mid), 0 4px 12px rgba(0,0,0,0.12);
+      position: relative;
+      z-index: 2;
     }
 
     .logo-bar img {
-      max-height: 68px;
-      max-width: 320px;
+      max-height: 64px;
+      max-width: 300px;
       width: auto;
       object-fit: contain;
       display: inline-block;
     }
 
-    /* Text fallback if image doesn't load */
-    .logo-bar .logo-text-fallback {
+    .logo-text-fallback {
       display: none;
       flex-direction: column;
       align-items: center;
-      gap: 4px;
+      gap: 3px;
     }
-    .logo-bar .logo-text-fallback .lt {
+    .logo-text-fallback .lt {
       font-family: 'Montserrat', sans-serif;
-      font-size: 34px;
-      font-weight: 800;
-      color: var(--orf-blue);
-      letter-spacing: 5px;
+      font-size: 32px; font-weight: 800;
+      color: var(--blue-dark); letter-spacing: 5px;
     }
-    .logo-bar .logo-text-fallback .ll {
-      width: 110px;
-      height: 4px;
-      background: linear-gradient(90deg, transparent, var(--orf-accent), var(--orf-blue), transparent);
+    .logo-text-fallback .ll {
+      width: 110px; height: 4px;
+      background: linear-gradient(90deg, transparent, var(--blue-mid), var(--blue-dark), transparent);
       border-radius: 3px;
     }
-    .logo-bar .logo-text-fallback .ls {
+    .logo-text-fallback .ls {
       font-family: 'Montserrat', sans-serif;
-      font-size: 8px;
-      font-weight: 700;
-      color: var(--orf-accent);
-      letter-spacing: 3px;
+      font-size: 8px; font-weight: 700;
+      color: var(--blue-mid); letter-spacing: 3px;
       text-transform: uppercase;
     }
 
-    /* ══════════════════════════════════════
-       BACKGROUND SECTION — starts below logo bar
-       Replace URL below with your GitHub Pages path once uploaded
-       e.g. https://YOUR-USERNAME.github.io/orf-wifi-splash/Back_Ground_NAA.jpg
-    ══════════════════════════════════════ */
+    /* ── Background section ── */
     .page-bg {
       flex: 1;
       display: flex;
       align-items: center;
       justify-content: center;
-      padding: 40px 20px;
-      background-image: url('https://satishrayanki.github.io/orf-wifi-splash/Back_Ground_NAA.jpg');
+      padding: 44px 20px;
+      background-image: url('https://YOUR-USERNAME.github.io/orf-wifi-splash/Back_Ground_NAA.jpg');
       background-size: cover;
-      background-position: center center;
+      background-position: center;
       background-repeat: no-repeat;
       position: relative;
     }
 
     .page-bg::before {
       content: '';
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(160deg, rgba(0,30,80,0.60) 0%, rgba(0,60,140,0.42) 100%);
+      position: absolute; inset: 0;
+      background: linear-gradient(150deg, rgba(0,20,70,0.62) 0%, rgba(0,50,120,0.45) 100%);
       z-index: 0;
     }
 
-    /* ══════════════════════════════════════
-       CARD
-    ══════════════════════════════════════ */
+    /* ── Card ── */
     .card {
       position: relative;
       z-index: 1;
       background: var(--white);
-      border-radius: 14px;
-      box-shadow: 0 20px 60px rgba(0,0,0,0.5);
+      border-radius: 18px;
+      box-shadow: 0 24px 64px rgba(0,0,0,0.5), 0 0 0 1px rgba(255,255,255,0.08);
       width: 100%;
-      max-width: 480px;
+      max-width: 490px;
       overflow: hidden;
-      animation: fadeUp 0.6s cubic-bezier(.22,.68,0,1.2) both;
+      animation: fadeUp 0.65s cubic-bezier(.22,.68,0,1.2) both;
     }
 
     @keyframes fadeUp {
-      from { opacity: 0; transform: translateY(28px); }
+      from { opacity: 0; transform: translateY(30px); }
       to   { opacity: 1; transform: translateY(0); }
+    }
+
+    /* Card top accent bar */
+    .card-accent {
+      height: 5px;
+      background: linear-gradient(90deg, var(--blue-dark) 0%, var(--blue-mid) 50%, var(--blue-light) 100%);
     }
 
     /* Card body */
     .card-body {
-      background: var(--light-gray);
-      padding: 28px 30px 10px;
+      background: var(--gray-bg);
+      padding: 30px 32px 12px;
       text-align: center;
     }
 
     .card-body h1 {
       font-family: 'Montserrat', sans-serif;
-      font-size: 22px;
-      font-weight: 800;
-      color: var(--orf-blue);
-      line-height: 1.25;
-      margin-bottom: 6px;
+      font-size: 23px; font-weight: 800;
+      color: var(--blue-dark);
+      line-height: 1.25; margin-bottom: 7px;
     }
 
     .card-body h2 {
       font-family: 'Montserrat', sans-serif;
-      font-size: 14px;
-      font-weight: 600;
-      color: var(--orf-accent);
-      margin-bottom: 14px;
+      font-size: 13.5px; font-weight: 600;
+      color: var(--blue-mid); margin-bottom: 16px;
+      letter-spacing: 0.2px;
     }
 
     .card-body p {
-      font-size: 13.5px;
-      color: var(--text-muted);
-      line-height: 1.6;
-      max-width: 340px;
-      margin: 0 auto 20px;
+      font-size: 13.5px; color: var(--text-muted);
+      line-height: 1.65; max-width: 340px;
+      margin: 0 auto 22px;
     }
 
-    /* Wi-Fi SVG icon */
+    /* Wi-Fi icon */
     .wifi-icon {
-      margin: 0 auto 20px;
-      width: 56px;
-      height: 56px;
+      margin: 0 auto 22px;
+      width: 54px; height: 54px;
+      background: linear-gradient(135deg, #e8f0fe, #dbeafe);
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      box-shadow: 0 4px 12px rgba(0,87,184,0.18);
     }
-    .wifi-icon svg { width: 100%; height: 100%; }
+    .wifi-icon svg { width: 32px; height: 32px; }
+
+    /* Divider */
+    .card-divider {
+      height: 1px;
+      background: var(--gray-border);
+      margin: 0 32px;
+    }
 
     /* Checkboxes */
     .card-form {
       background: var(--white);
-      margin: 0 30px;
-      border-radius: 8px;
-      border: 1px solid var(--border);
+      margin: 16px 28px 0;
+      border-radius: 10px;
+      border: 1px solid var(--gray-border);
       overflow: hidden;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.04);
     }
 
     .check-row {
@@ -185,96 +182,196 @@
       align-items: flex-start;
       gap: 12px;
       padding: 14px 16px;
-      border-bottom: 1px solid var(--border);
+      border-bottom: 1px solid var(--gray-border);
       text-align: left;
+      transition: background 0.15s;
     }
     .check-row:last-child { border-bottom: none; }
+    .check-row:hover { background: #f8faff; }
 
     .check-row input[type="checkbox"] {
       flex-shrink: 0;
       margin-top: 2px;
-      width: 17px;
-      height: 17px;
-      accent-color: var(--orf-accent);
+      width: 17px; height: 17px;
+      accent-color: var(--blue-mid);
       cursor: pointer;
     }
 
     .check-row label {
-      font-size: 13px;
-      color: var(--text);
-      cursor: pointer;
-      line-height: 1.5;
+      font-size: 13px; color: var(--text);
+      cursor: pointer; line-height: 1.55;
     }
-    .check-row label strong { color: var(--orf-blue); }
-    .check-row label a {
-      color: var(--orf-accent);
+    .check-row label strong { color: var(--blue-dark); }
+    .check-row label .aup-trigger {
+      color: var(--blue-mid);
       font-style: italic;
       text-decoration: none;
+      border-bottom: 1px dashed var(--blue-light);
+      cursor: pointer;
+      transition: color 0.15s;
     }
-    .check-row label a:hover { text-decoration: underline; }
+    .check-row label .aup-trigger:hover { color: var(--blue-dark); }
 
     /* Connect button */
     .card-actions {
-      padding: 18px 30px;
-      background: var(--light-gray);
+      padding: 20px 28px 22px;
+      background: var(--gray-bg);
       text-align: center;
+      margin-top: 16px;
     }
 
     .btn-connect {
-      display: block;
-      width: 100%;
+      display: block; width: 100%;
       padding: 15px;
-      background: var(--orf-green);
+      background: linear-gradient(135deg, var(--green) 0%, #5db535 100%);
       color: var(--white);
       font-family: 'Montserrat', sans-serif;
-      font-size: 17px;
-      font-weight: 700;
-      border: none;
-      border-radius: 7px;
-      cursor: pointer;
-      letter-spacing: 0.5px;
-      transition: background 0.2s, transform 0.15s, box-shadow 0.2s;
-      box-shadow: 0 4px 14px rgba(90,158,47,0.35);
+      font-size: 16px; font-weight: 700;
+      border: none; border-radius: 9px;
+      cursor: pointer; letter-spacing: 0.8px;
+      text-transform: uppercase;
+      transition: all 0.2s;
+      box-shadow: 0 5px 18px rgba(78,154,46,0.4);
     }
-    .btn-connect:hover {
-      background: var(--orf-green-hover);
-      transform: translateY(-1px);
-      box-shadow: 0 6px 20px rgba(90,158,47,0.45);
+    .btn-connect:hover:not(:disabled) {
+      background: linear-gradient(135deg, var(--green-hover) 0%, #4e9a2e 100%);
+      transform: translateY(-2px);
+      box-shadow: 0 8px 24px rgba(78,154,46,0.45);
     }
-    .btn-connect:active { transform: translateY(0); }
+    .btn-connect:active:not(:disabled) { transform: translateY(0); }
     .btn-connect:disabled {
-      background: #aaa;
-      box-shadow: none;
-      cursor: not-allowed;
-      transform: none;
+      background: linear-gradient(135deg, #b0bec5, #cfd8dc);
+      box-shadow: none; cursor: not-allowed; transform: none;
     }
 
-    .aup-link {
-      display: inline-block;
-      margin-top: 10px;
-      font-size: 12px;
-      color: var(--orf-accent);
-      text-decoration: none;
+    .aup-bottom-link {
+      display: inline-block; margin-top: 11px;
+      font-size: 11.5px; color: var(--blue-mid);
+      text-decoration: none; letter-spacing: 0.2px;
     }
-    .aup-link:hover { text-decoration: underline; }
+    .aup-bottom-link:hover { text-decoration: underline; }
+
+    /* ══════════════════════════════
+       AUP MODAL
+    ══════════════════════════════ */
+    .modal-overlay {
+      display: none;
+      position: fixed; inset: 0;
+      background: rgba(0,10,40,0.72);
+      z-index: 100;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+      backdrop-filter: blur(3px);
+    }
+    .modal-overlay.open { display: flex; }
+
+    .modal {
+      background: var(--white);
+      border-radius: 14px;
+      width: 100%; max-width: 580px;
+      max-height: 82vh;
+      display: flex; flex-direction: column;
+      box-shadow: 0 30px 80px rgba(0,0,0,0.5);
+      animation: modalIn 0.3s cubic-bezier(.22,.68,0,1.2) both;
+      overflow: hidden;
+    }
+
+    @keyframes modalIn {
+      from { opacity: 0; transform: scale(0.94) translateY(16px); }
+      to   { opacity: 1; transform: scale(1) translateY(0); }
+    }
+
+    .modal-header {
+      background: linear-gradient(135deg, var(--blue-dark), var(--blue-mid));
+      padding: 18px 24px 16px;
+      display: flex; align-items: center; justify-content: space-between;
+      flex-shrink: 0;
+    }
+    .modal-header h3 {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 14px; font-weight: 700;
+      color: var(--white); letter-spacing: 0.3px;
+    }
+    .modal-close {
+      background: rgba(255,255,255,0.18);
+      border: none; color: var(--white);
+      width: 30px; height: 30px;
+      border-radius: 50%; cursor: pointer;
+      font-size: 16px; font-weight: 700;
+      display: flex; align-items: center; justify-content: center;
+      transition: background 0.15s;
+      flex-shrink: 0;
+    }
+    .modal-close:hover { background: rgba(255,255,255,0.32); }
+
+    .modal-body {
+      overflow-y: auto;
+      padding: 22px 26px;
+      flex: 1;
+      line-height: 1.7;
+      color: var(--text);
+      font-size: 13px;
+    }
+
+    .modal-body h4 {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 12.5px; font-weight: 700;
+      color: var(--blue-dark);
+      text-transform: uppercase; letter-spacing: 0.5px;
+      margin: 20px 0 6px;
+      padding-bottom: 4px;
+      border-bottom: 2px solid var(--gray-border);
+    }
+    .modal-body h4:first-child { margin-top: 0; }
+
+    .modal-body p {
+      color: var(--text-muted); font-size: 12.5px;
+      line-height: 1.7; margin-bottom: 8px;
+    }
+
+    .modal-footer {
+      padding: 14px 24px;
+      background: var(--gray-bg);
+      border-top: 1px solid var(--gray-border);
+      text-align: center;
+      flex-shrink: 0;
+    }
+    .modal-footer button {
+      padding: 10px 36px;
+      background: var(--blue-mid);
+      color: var(--white);
+      font-family: 'Montserrat', sans-serif;
+      font-size: 13px; font-weight: 700;
+      border: none; border-radius: 7px;
+      cursor: pointer; letter-spacing: 0.5px;
+      transition: background 0.2s;
+    }
+    .modal-footer button:hover { background: var(--blue-dark); }
+
+    /* Scrollbar styling */
+    .modal-body::-webkit-scrollbar { width: 6px; }
+    .modal-body::-webkit-scrollbar-track { background: var(--gray-bg); }
+    .modal-body::-webkit-scrollbar-thumb { background: var(--gray-border); border-radius: 3px; }
 
     @media (max-width: 480px) {
-      .logo-bar { padding: 12px 16px 10px; }
-      .logo-bar img { max-height: 52px; }
-      .page-bg { padding: 24px 16px; }
+      .logo-bar { padding: 10px 16px 9px; }
+      .logo-bar img { max-height: 50px; }
+      .page-bg { padding: 24px 14px; }
       .card-body { padding: 22px 20px 10px; }
       .card-body h1 { font-size: 19px; }
-      .card-form { margin: 0 20px; }
-      .card-actions { padding: 16px 20px; }
+      .card-form { margin: 14px 16px 0; }
+      .card-actions { padding: 16px 16px 18px; }
+      .modal-body { padding: 16px 18px; }
     }
   </style>
 </head>
 <body>
 
-  <!-- ── Logo bar ── -->
+  <!-- Logo bar -->
   <div class="logo-bar">
     <img
-      src="https://satishrayanki.github.io/orf-wifi-splash/NIA-Horizontal-Logo-4c.jpg"
+      src="https://YOUR-USERNAME.github.io/orf-wifi-splash/NIA-Horizontal-Logo-4c.jpg"
       alt="Norfolk International Airport"
       onerror="this.style.display='none'; document.getElementById('logo-fb').style.display='flex';"
     />
@@ -285,9 +382,11 @@
     </div>
   </div>
 
-  <!-- ── Background + Card ── -->
+  <!-- Background + Card -->
   <div class="page-bg">
     <div class="card">
+
+      <div class="card-accent"></div>
 
       <div class="card-body">
         <h1>ORF Keeps you Connected.</h1>
@@ -296,10 +395,10 @@
 
         <div class="wifi-icon">
           <svg viewBox="0 0 80 56" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M40 44 a4 4 0 1 1 0 8 a4 4 0 0 1 0-8z" fill="#0072ce"/>
-            <path d="M25 34 Q40 22 55 34" stroke="#0072ce" stroke-width="5.5" stroke-linecap="round" fill="none"/>
-            <path d="M13 23 Q40 5 67 23" stroke="#003087" stroke-width="5.5" stroke-linecap="round" fill="none"/>
-            <path d="M2 12 Q40 -8 78 12" stroke="#003087" stroke-width="5" stroke-linecap="round" fill="none" opacity="0.35"/>
+            <path d="M40 44 a4 4 0 1 1 0 8 a4 4 0 0 1 0-8z" fill="#0057b8"/>
+            <path d="M25 34 Q40 22 55 34" stroke="#0057b8" stroke-width="5.5" stroke-linecap="round" fill="none"/>
+            <path d="M13 23 Q40 5 67 23" stroke="#002060" stroke-width="5.5" stroke-linecap="round" fill="none"/>
+            <path d="M2 12 Q40 -8 78 12" stroke="#002060" stroke-width="5" stroke-linecap="round" fill="none" opacity="0.3"/>
           </svg>
         </div>
       </div>
@@ -314,16 +413,57 @@
         <div class="check-row">
           <input type="checkbox" id="chk2" onchange="updateBtn()"/>
           <label for="chk2">
-            I Agree with the Wi-Fi System <a href="#" onclick="return false;">User Agreement and Acceptable Use Policy</a>
+            I Agree with the Wi-Fi System
+            <a class="aup-trigger" onclick="openModal(); return false;">User Agreement and Acceptable Use Policy</a>
           </label>
         </div>
       </div>
 
       <div class="card-actions">
         <button class="btn-connect" id="connectBtn" disabled onclick="handleConnect()">Connect</button>
-        <a class="aup-link" href="#" onclick="return false;">Acceptable Use Policy</a>
+        <a class="aup-bottom-link" onclick="openModal(); return false;" href="#">Acceptable Use Policy</a>
       </div>
 
+    </div>
+  </div>
+
+  <!-- ══ AUP MODAL ══ -->
+  <div class="modal-overlay" id="aupModal" onclick="closeModalOutside(event)">
+    <div class="modal">
+      <div class="modal-header">
+        <h3>Composite Airport Guest Wi-Fi Acceptable Use Policy</h3>
+        <button class="modal-close" onclick="closeModal()">✕</button>
+      </div>
+      <div class="modal-body">
+
+        <h4>1. Purpose and Scope</h4>
+        <p>This free public internet Wi-Fi network ("Network") is provided by the Norfolk Airport Authority as a courtesy service to travelers, visitors, and other authorized individuals. By accessing the Network, you agree to comply with the terms of this Acceptable Use Policy. Access to this service is a privilege and not a right. Therefore, the service may be blocked, suspended, or terminated at any time for any reason including, but not limited to, violation of this agreement, actions that may lead to liability for the Norfolk Airport Authority or its owners, disruption of access to other Users or Networks, and violation of applicable laws or regulations.</p>
+
+        <h4>2. Disclaimer and Liability</h4>
+        <p>You acknowledge (I) that the Service may not be uninterrupted or error-free; (II) that viruses or other harmful applications may be available through the Service; (III) that The Norfolk Airport Authority / Norfolk International Airport does not guarantee the security of the Service and that unauthorized third parties may access your computer or files or otherwise monitor your connection. THE SERVICE AND ANY PRODUCTS OR SERVICES PROVIDED ON OR IN CONNECTION WITH THE SERVICE ARE PROVIDED ON AN 'AS IS', 'AS AVAILABLE' BASIS WITHOUT WARRANTIES OF ANY KIND.</p>
+
+        <h4>3. User Authentication and Access</h4>
+        <p>BY CLICKING ON 'I AGREE WITH THE WI-FI SYSTEM USER AGREEMENT AND ACCEPTABLE USE POLICY' ON THE WI-FI SYSTEM SPLASH PAGE, YOU REPRESENT THAT YOU HAVE READ, UNDERSTAND AND AGREE TO THE TERMS OF THIS AGREEMENT; AND YOU ARE AT LEAST 18 YEARS OF AGE. You will be automatically logged out if there is inactivity on your computer for 60 minutes.</p>
+
+        <h4>4. Acceptable and Unacceptable Use</h4>
+        <p>Your access to the Service is conditioned on legal and appropriate use. The use of the Service for the following activities is prohibited: Spamming and invasion of privacy; Intellectual property right violations; Obscene or indecent speech or materials; Defamatory or abusive language; Forging of headers; Hacking; Distribution of Internet viruses, Trojan Horses, or other destructive activities; Facilitating a violation of this Agreement of Use; Export control violations; Other illegal activities; Resale.</p>
+
+        <h4>5. Security and Monitoring</h4>
+        <p>Users should have no expectation of privacy when using this Network. Activity may be monitored and logged for compliance, troubleshooting, or security purposes. The Network may not be encrypted. Users are advised not to transmit sensitive or confidential information without the use of a personal VPN.</p>
+
+        <h4>6. Privacy Statement</h4>
+        <p>We collect several types of information from and about users of our Platforms, including information by which you may be personally identified and information about your internet connection, the equipment you use to access our Platforms, and usage details. We use information that we collect about you or that you provide to us, including any personal information: To present our Platforms and associated content to you; to provide you with information, products, or services that you request from us; and to comply with any court order, law, or legal process.</p>
+
+        <h4>7. Enforcement and Consequences</h4>
+        <p>Violations of this Policy may result in suspension or termination of access. Illegal activities or serious violations may be reported to law enforcement. Norfolk Airport Authority reserves the right to update or modify this Policy at any time without prior notice.</p>
+
+        <h4>8. Acknowledgment</h4>
+        <p>Your electronic acceptance of this Agreement by clicking 'I Agree with the Wi-Fi System User Agreement and Acceptable Use Policy' has the same effect as if you had signed this Agreement. The effective date of this Agreement is the date that you click on 'I Agree...'.</p>
+
+      </div>
+      <div class="modal-footer">
+        <button onclick="closeModal()">Close</button>
+      </div>
     </div>
   </div>
 
@@ -338,12 +478,25 @@
     var btn = document.getElementById('connectBtn');
     btn.textContent = 'Connecting…';
     btn.disabled = true;
-    // Grab Meraki's continue_url from the query string
     var params = new URLSearchParams(window.location.search);
     var continueUrl = params.get('continue_url') || 'https://norfolkairport.com';
     setTimeout(function() {
       window.location.href = continueUrl;
     }, 1500);
+  }
+
+  function openModal() {
+    document.getElementById('aupModal').classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeModal() {
+    document.getElementById('aupModal').classList.remove('open');
+    document.body.style.overflow = '';
+  }
+
+  function closeModalOutside(e) {
+    if (e.target === document.getElementById('aupModal')) closeModal();
   }
 </script>
 
