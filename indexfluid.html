@@ -40,37 +40,41 @@
       z-index: 0;
     }
 
-    /* ── Logo — top left ── */
-    .logo-wrap {
+    /* ── Logo bar — full width white strip at top ── */
+    .logo-bar {
       position: relative;
       z-index: 2;
-      padding: 22px 28px 0;
+      width: 100%;
+      background: #ffffff;
+      padding: 15px 30px 13px;
+      text-align: center;
+      flex-shrink: 0;
+      box-shadow: 0 2px 0 #0057b8, 0 4px 16px rgba(0,0,0,0.15);
     }
 
-    .logo-wrap img {
+    .logo-bar img {
       max-height: 66px;
-      max-width: 210px;
+      max-width: 300px;
       width: auto;
       object-fit: contain;
-      display: block;
-      /* Crisp white on the photo background */
-      filter: drop-shadow(0 2px 8px rgba(0,0,0,0.3)) brightness(0) invert(1);
+      display: inline-block;
     }
 
     .logo-text-fallback {
       display: none;
       flex-direction: column;
+      align-items: center;
       gap: 3px;
     }
     .logo-text-fallback .lt {
       font-family: 'Montserrat', sans-serif;
       font-size: 30px; font-weight: 900;
-      color: #fff; letter-spacing: 5px; line-height: 1;
+      color: #001845; letter-spacing: 5px; line-height: 1;
     }
     .logo-text-fallback .ls {
       font-family: 'Montserrat', sans-serif;
       font-size: 7.5px; font-weight: 700;
-      color: rgba(255,255,255,0.9);
+      color: #0057b8;
       letter-spacing: 2.5px; text-transform: uppercase;
     }
 
@@ -397,8 +401,8 @@
 </head>
 <body>
 
-  <!-- Logo top-left -->
-  <div class="logo-wrap">
+  <!-- Full width white logo bar -->
+  <div class="logo-bar">
     <img
       src="https://satishrayanki.github.io/orf-wifi-splash/NIA-Horizontal-Logo-4c.jpg"
       alt="Norfolk International Airport"
