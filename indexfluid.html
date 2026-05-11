@@ -496,7 +496,7 @@
     btn.textContent = 'Connecting…';
     btn.disabled = true;
     var params = new URLSearchParams(window.location.search);
-    var continueUrl = params.get('continue_url') || 'https://norfolkairport.com';
+    var continueUrl = params.get('continue_url') || 'https://google.com';
     setTimeout(function() { window.location.href = continueUrl; }, 1500);
   }
   function openModal() {
